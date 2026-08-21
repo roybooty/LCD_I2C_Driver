@@ -21,16 +21,11 @@ int main(void) {
     GPIOB->CRL |= (0xFU << 28);
 
     lcd_init();
+    lcd_clear();
 
+    write_to_lcd("hi");
 
-    lcd_send(0x28, 0); // 2 Lines, 5x8 font
-    lcd_send(0x0C, 0); // Display ON, Cursor OFF
-    lcd_send(0x01, 0); // Clear Display
-    delay(50000);      // Clearing takes time!
-    lcd_send(0x06, 0); // Entry Mode
-
-    write_to_lcd("good");
-    I2C->CR1 |= (1 << 9);
+    //I2C->CR1 |= (1 << 9);
     return 0;
 }
 
