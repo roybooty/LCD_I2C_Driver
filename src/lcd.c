@@ -50,3 +50,9 @@ void lcd_clear() {
     delay(50000);      // Clearing takes time!
     lcd_send(0x06, 0); // Entry Mode
 }
+
+void write_to_lcd(const char* message) {
+    for(uint8_t i = 0;i < sizeof(message);i++){
+        lcd_send(((unsigned char)message[i]), RS);
+    }
+}

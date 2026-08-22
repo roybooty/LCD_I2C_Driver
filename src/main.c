@@ -1,15 +1,8 @@
 #include <stdint.h>
 #include "../header/stm32f103.h"
-#include "../header/lcd_setup.h"
-#include "../header/utilities.h"
+#include "../header/lcd.h"
 
-void write_to_lcd(const char* message) {
-    for(uint8_t i = 0;i < sizeof(message);i++){
-        lcd_send(((unsigned char)message[i]), RS);
-    }
-}
-
-int main(void) {
+void pin_setup() {
     RCC->APB2ENR |= (1 << 3);
     RCC->APB1ENR |= (1 << 21);
 
@@ -19,11 +12,15 @@ int main(void) {
 
     GPIOB->CRL |= (0xFU << 24);
     GPIOB->CRL |= (0xFU << 28);
+}
+
+int main(void) {
+    pin_setup();
 
     lcd_init();
     lcd_clear();
 
-    write_to_lcd("hi");
+    write_to_lcd("peak");
 
     //I2C->CR1 |= (1 << 9);
     return 0;

@@ -27,7 +27,7 @@ Built to understand lower-level MCU communication protocols by interfacing with 
 
 ```bash
 # Clone the repository
-git clone [https://github.com/roybooty/LCD_I2C_Driver.git](https://github.com/roybooty/LCD_I2C_Driver.git)
+git clone https://github.com/roybooty/LCD_I2C_Driver.git
 cd LCD_I2C_Driver
 
 # Compile the firmware
@@ -38,3 +38,32 @@ make flash
 
 # Clean build artifacts
 make clean
+
+```
+
+## Usage Example
+
+```bash
+#include <stdint.h>
+#include "../header/stm32f103.h"
+#include "../header/lcd.h"
+
+int main(void) {
+    // Configure GPIO pins and RCC registers
+    pin_setup();
+
+    // Initialize I2C peripheral and LCD controller
+    lcd_init();
+
+    // Clear display buffer
+    lcd_clear();
+
+    // Send string to display
+    write_to_lcd("hi");
+
+    while (1) {
+        // Main loop
+    }
+}
+
+```

@@ -4,7 +4,7 @@ CFLAGS  ?= -I./header -W -Wall -Wextra -Werror -Wundef -Wshadow -Wdouble-promoti
            -mcpu=cortex-m3 -mthumb -msoft-float $(EXTRA_CFLAGS)
 
 LDFLAGS ?= -Tscripts/link.ld -nostartfiles -Wl,--gc-sections -Wl,-Map=$@.map --specs=nosys.specs
-SOURCES = src/main.c src/lcd_setup.c src/utilities.c
+SOURCES = src/main.c src/lcd.c src/utilities.c
 
 ifeq ($(OS),Windows_NT)
   RM = cmd /C del /Q /F
